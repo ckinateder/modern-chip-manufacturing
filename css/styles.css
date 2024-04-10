@@ -1,0 +1,37 @@
+.slide {
+  padding: 0px;
+  margin: 0px;
+  max-width: 1500px;
+  min-width: 200px;
+  height: 100vh;
+  border-bottom: 1px solid #000;
+}
+.slideshow {
+  /* column display centered on page*/
+  display: flex;
+  justify-content: center;
+  /* column display centered on page*/
+  flex-direction: column;
+  align-items: center;
+  /* column display centered on page*/
+}
+.scroll-btn {
+  font-family: "Inter", sans-serif;
+  padding: 10px;
+}
+.scroll-btn:hover {
+  cursor: pointer;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  padding: 0px;
+  margin: 0px;
+  background-color: #fff0e5;
+}
+
+* {
+  /*font-family: "Playfair Display", "Times New Roman", serif;*/
+}
