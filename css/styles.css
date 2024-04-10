@@ -64,6 +64,7 @@
 .up-btn {
   display: none;
 }
+
 .next-viewport-down-btn {
   width: 50px;
   padding: 10px;
@@ -105,6 +106,38 @@ body {
   background-color: #fff0e5;
 }
 
+a {
+  color: #000000;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(-10%);
+  width: fit-content;
+  padding: 0px 15px;
+  border-top: #000000 1px solid;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 15px 15px;
+  border-bottom: #000000 1px solid;
+  z-index: 100;
+  background-color: #fff0e5;
+  opacity: 0;
+  transition: 0.2s;
+
+  .title {
+    font-size: 1.5em;
+    font-weight: 700;
+    font-optical-sizing: auto;
+  }
+}
+
 * {
-  /*font-family: "Playfair Display", "Times New Roman", serif;*/
+  font-family: "Playfair Display", "Times New Roman", serif;
 }

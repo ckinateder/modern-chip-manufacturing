@@ -19,42 +19,56 @@
     ></script>
   </head>
   <body>
+    <div class="header">
+      <span class="title"></span>
+    </div>
     <div class="slideshow">
       <div class="slide-container">
-        <img class="slide" id="slide1" src="img/sld_1.svg" alt="Slide 1" />
+        <a href="https://ig.ft.com/microchips/" target="_blank">
+          <img class="slide" id="slide1" src="img/sld_1.svg" alt="Slide 1" />
+        </a>
       </div>
       <div class="slide-container">
-        <img class="slide" id="slide2" src="img/sld_2.svg" alt="Slide 1" />
+        <img class="slide" id="slide2" src="img/sld_2.svg" alt="Slide 2" />
       </div>
       <div class="slide-container">
-        <img class="slide" id="slide3" src="img/sld_3.svg" alt="Slide 1" />
+        <img class="slide" id="slide3" src="img/sld_3.svg" alt="Slide 3" />
       </div>
       <div class="slide-container">
-        <img class="slide" id="slide4" src="img/sld_4.svg" alt="Slide 1" />
+        <img class="slide" id="slide4" src="img/sld_4.svg" alt="Slide 4" />
       </div>
       <div class="slide-container">
-        <img class="slide" id="slide5" src="img/sld_5.svg" alt="Slide 1" />
+        <img class="slide" id="slide5" src="img/sld_5.svg" alt="Slide 5" />
       </div>
       <div class="slide-container">
-        <img class="slide" id="slide6" src="img/sld_6.svg" alt="Slide 1" />
+        <img class="slide" id="slide6" src="img/sld_6.svg" alt="Slide 6" />
       </div>
       <div class="slide-container">
-        <img class="slide" id="slide7" src="img/sld_7.svg" alt="Slide 1" />
+        <img class="slide" id="slide7" src="img/sld_7.svg" alt="Slide 7" />
       </div>
       <div class="slide-container">
-        <img class="slide" id="slide8" src="img/sld_8.svg" alt="Slide 1" />
+        <img class="slide" id="slide8" src="img/sld_8.svg" alt="Slide 8" />
       </div>
       <div class="slide-container">
-        <img class="slide" id="slide9" src="img/sld_9.svg" alt="Slide 1" />
+        <img class="slide" id="slide9" src="img/sld_9.svg" alt="Slide 9" />
       </div>
       <div class="slide-container">
-        <img class="slide" id="slide10" src="img/sld_10.svg" alt="Slide 1" />
+        <img class="slide" id="slide10" src="img/sld_10.svg" alt="Slide 10" />
       </div>
       <div class="slide-container">
-        <img class="slide" id="slide11" src="img/sld_11.svg" alt="Slide 1" />
+        <img class="slide" id="slide11" src="img/sld_11.svg" alt="Slide 11" />
       </div>
       <div class="slide-container">
-        <img class="slide" id="slide12" src="img/sld_12.svg" alt="Slide 1" />
+        <a href="https://ig.ft.com/microchips/" target="_blank">
+          <img class="slide" id="slide12" src="img/sld_12.svg" alt="Slide 12" />
+        </a>
+        <div class="footer">
+          <p>
+            <a href="https://www.calvinkinateder.com" target="_blank"
+              >Calvin Kinateder</a
+            >, 2024
+          </p>
+        </div>
       </div>
     </div>
 
@@ -97,6 +111,7 @@
 
     $(window).scroll(function () {
       setTimeout(function () {
+        // if on the last slide, disable the next-viewport-down-btn and enable the to-top-btn
         if (onLastSlide()) {
           $(".next-viewport-down-btn").css("opacity", 0);
           $(".next-viewport-down-btn").css("pointer-events", "none");
@@ -108,6 +123,16 @@
           $(".to-top-btn").css("opacity", 0);
           $(".to-top-btn").css("pointer-events", "none");
         }
+        /*
+        // if past the first slide, enable .header
+        if (getCurrentSlide() > 1) {
+          $(".header").css("opacity", 1);
+          $(".header").css("pointer-events", "auto");
+        } else {
+          $(".header").css("opacity", 0);
+          $(".header").css("pointer-events", "none");
+        }
+        */
       }, 500);
       // while scrolling, hide the button
       $(".next-viewport-down-btn").css("opacity", 0);
