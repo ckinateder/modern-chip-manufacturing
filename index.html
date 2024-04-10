@@ -12,6 +12,11 @@
     />
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
     <link rel="icon" href="img/icon.png" type="image/png" />
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <div class="slideshow">
@@ -170,5 +175,66 @@
         />
       </div>
     </div>
+
+    <img src="img/down-arrow.png" class="next-viewport-down-btn" />
+    <img src="img/up-arrow.png" class="to-top-btn" />
   </body>
+
+  <script>
+    // keep track of the current element in view
+
+    // scroll down one viewport on click of .next-viewport-down
+    let disabledOpacity = 0.5;
+    $(".next-viewport-down-btn").click(function () {
+      $(".next-viewport-down-btn").css("opacity", disabledOpacity);
+      setTimeout(function () {
+        $(".next-viewport-down-btn").css("opacity", 1);
+      }, 500);
+      if (!event.detail || event.detail < 2)
+        window.scrollBy(0, window.innerHeight + 5);
+    });
+
+    // when scrolling in motion, disable the button, and re-enable it after scrolling stops
+    let lastSlide = 12;
+    const onLastSlide = () => {
+      return (
+        window.scrollY + window.innerHeight >=
+        lastSlide * window.innerHeight - window.innerHeight / 2
+      );
+    };
+
+    let scrollTimeout;
+    $(window).scroll(function () {
+      /*
+      if (!onLastSlide()) {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(function () {
+          $(".next-viewport-down-btn").css("opacity", 1);
+        }, 300);
+      }
+      */
+      if (onLastSlide()) {
+        $(".next-viewport-down-btn").css("opacity", 0);
+        $(".next-viewport-down-btn").css("pointer-events", "none");
+
+        $(".to-top-btn").css("opacity", 1);
+        $(".to-top-btn").css("pointer-events", "auto");
+      } else {
+        $(".next-viewport-down-btn").css("opacity", 1);
+        $(".next-viewport-down-btn").css("pointer-events", "auto");
+
+        $(".to-top-btn").css("opacity", 0);
+        $(".to-top-btn").css("pointer-events", "none");
+      }
+    });
+
+    // scroll to the top of the page on click of .to-top-btn
+    $(".to-top-btn").click(function () {
+      $(".to-top-btn").css("opacity", disabledOpacity);
+      setTimeout(function () {
+        $(".to-top-btn").css("opacity", 1);
+      }, 500);
+      if (!event.detail || event.detail < 2) window.scrollTo(0, 0);
+    });
+  </script>
 </html>
