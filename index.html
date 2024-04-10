@@ -22,157 +22,39 @@
     <div class="slideshow">
       <div class="slide-container">
         <img class="slide" id="slide1" src="img/sld_1.svg" alt="Slide 1" />
-        <img
-          src="img/down-arrow.png"
-          class="down-btn"
-          onClick="document.getElementById('slide2').scrollIntoView();"
-        />
       </div>
       <div class="slide-container">
         <img class="slide" id="slide2" src="img/sld_2.svg" alt="Slide 1" />
-        <img
-          src="img/down-arrow.png"
-          class="down-btn"
-          onClick="document.getElementById('slide3').scrollIntoView();"
-        />
-        <img
-          src="img/up-arrow.png"
-          class="up-btn"
-          onClick="document.getElementById('slide1').scrollIntoView();"
-        />
       </div>
       <div class="slide-container">
         <img class="slide" id="slide3" src="img/sld_3.svg" alt="Slide 1" />
-        <img
-          src="img/down-arrow.png"
-          class="down-btn"
-          onClick="document.getElementById('slide4').scrollIntoView();"
-        />
-        <img
-          src="img/up-arrow.png"
-          class="up-btn"
-          onClick="document.getElementById('slide2').scrollIntoView();"
-        />
       </div>
       <div class="slide-container">
         <img class="slide" id="slide4" src="img/sld_4.svg" alt="Slide 1" />
-        <img
-          src="img/down-arrow.png"
-          class="down-btn"
-          onClick="document.getElementById('slide5').scrollIntoView();"
-        />
-        <img
-          src="img/up-arrow.png"
-          class="up-btn"
-          onClick="document.getElementById('slide3').scrollIntoView();"
-        />
       </div>
-
       <div class="slide-container">
         <img class="slide" id="slide5" src="img/sld_5.svg" alt="Slide 1" />
-        <img
-          src="img/down-arrow.png"
-          class="down-btn"
-          onClick="document.getElementById('slide6').scrollIntoView();"
-        />
-        <img
-          src="img/up-arrow.png"
-          class="up-btn"
-          onClick="document.getElementById('slide4').scrollIntoView();"
-        />
       </div>
-
       <div class="slide-container">
         <img class="slide" id="slide6" src="img/sld_6.svg" alt="Slide 1" />
-        <img
-          src="img/down-arrow.png"
-          class="down-btn"
-          onClick="document.getElementById('slide7').scrollIntoView();"
-        />
-        <img
-          src="img/up-arrow.png"
-          class="up-btn"
-          onClick="document.getElementById('slide5').scrollIntoView();"
-        />
       </div>
-
       <div class="slide-container">
         <img class="slide" id="slide7" src="img/sld_7.svg" alt="Slide 1" />
-        <img
-          src="img/down-arrow.png"
-          class="down-btn"
-          onClick="document.getElementById('slide8').scrollIntoView();"
-        />
-        <img
-          src="img/up-arrow.png"
-          class="up-btn"
-          onClick="document.getElementById('slide6').scrollIntoView();"
-        />
       </div>
-
       <div class="slide-container">
         <img class="slide" id="slide8" src="img/sld_8.svg" alt="Slide 1" />
-        <img
-          src="img/down-arrow.png"
-          class="down-btn"
-          onClick="document.getElementById('slide9').scrollIntoView();"
-        />
-        <img
-          src="img/up-arrow.png"
-          class="up-btn"
-          onClick="document.getElementById('slide7').scrollIntoView();"
-        />
       </div>
-
       <div class="slide-container">
         <img class="slide" id="slide9" src="img/sld_9.svg" alt="Slide 1" />
-        <img
-          src="img/down-arrow.png"
-          class="down-btn"
-          onClick="document.getElementById('slide10').scrollIntoView();"
-        />
-        <img
-          src="img/up-arrow.png"
-          class="up-btn"
-          onClick="document.getElementById('slide8').scrollIntoView();"
-        />
       </div>
-
       <div class="slide-container">
         <img class="slide" id="slide10" src="img/sld_10.svg" alt="Slide 1" />
-        <img
-          src="img/down-arrow.png"
-          class="down-btn"
-          onClick="document.getElementById('slide11').scrollIntoView();"
-        />
-        <img
-          src="img/up-arrow.png"
-          class="up-btn"
-          onClick="document.getElementById('slide9').scrollIntoView();"
-        />
       </div>
-
       <div class="slide-container">
         <img class="slide" id="slide11" src="img/sld_11.svg" alt="Slide 1" />
-        <img
-          src="img/down-arrow.png"
-          class="down-btn"
-          onClick="document.getElementById('slide12').scrollIntoView();"
-        />
-        <img
-          src="img/up-arrow.png"
-          class="up-btn"
-          onClick="document.getElementById('slide10').scrollIntoView();"
-        />
       </div>
-
       <div class="slide-container">
         <img class="slide" id="slide12" src="img/sld_12.svg" alt="Slide 1" />
-        <img
-          src="img/up-arrow.png"
-          class="up-btn"
-          onClick="document.getElementById('slide1').scrollIntoView();"
-        />
       </div>
     </div>
 
@@ -181,17 +63,23 @@
   </body>
 
   <script>
-    // keep track of the current element in view
-
     // scroll down one viewport on click of .next-viewport-down
-    let disabledOpacity = 0.5;
+    let disabledOpacity = 0.3;
+    let enabledOpacity = 0.8;
+    let offset = 5;
+
+    const noDoubleClicked = () => {
+      return !event.detail || event.detail < 2;
+    };
+
     $(".next-viewport-down-btn").click(function () {
-      $(".next-viewport-down-btn").css("opacity", disabledOpacity);
-      setTimeout(function () {
-        $(".next-viewport-down-btn").css("opacity", 1);
-      }, 500);
-      if (!event.detail || event.detail < 2)
-        window.scrollBy(0, window.innerHeight + 5);
+      // scroll to the next slide
+      if (noDoubleClicked()) {
+        // prevent double click
+        let id = `slide${getCurrentSlide() + 1}`;
+        let slide = document.getElementById(id);
+        if (slide) slide.scrollIntoView({ behavior: "smooth" });
+      }
     });
 
     // when scrolling in motion, disable the button, and re-enable it after scrolling stops
@@ -203,38 +91,38 @@
       );
     };
 
-    let scrollTimeout;
+    const getCurrentSlide = () => {
+      return Math.round(window.scrollY / (window.innerHeight + offset)) + 1;
+    };
+
     $(window).scroll(function () {
-      /*
-      if (!onLastSlide()) {
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(function () {
-          $(".next-viewport-down-btn").css("opacity", 1);
-        }, 300);
-      }
-      */
-      if (onLastSlide()) {
-        $(".next-viewport-down-btn").css("opacity", 0);
-        $(".next-viewport-down-btn").css("pointer-events", "none");
-
-        $(".to-top-btn").css("opacity", 1);
-        $(".to-top-btn").css("pointer-events", "auto");
-      } else {
-        $(".next-viewport-down-btn").css("opacity", 1);
-        $(".next-viewport-down-btn").css("pointer-events", "auto");
-
-        $(".to-top-btn").css("opacity", 0);
-        $(".to-top-btn").css("pointer-events", "none");
-      }
+      setTimeout(function () {
+        if (onLastSlide()) {
+          $(".next-viewport-down-btn").css("opacity", 0);
+          $(".next-viewport-down-btn").css("pointer-events", "none");
+          $(".to-top-btn").css("opacity", 1);
+          $(".to-top-btn").css("pointer-events", "auto");
+        } else {
+          $(".next-viewport-down-btn").css("opacity", enabledOpacity);
+          $(".next-viewport-down-btn").css("pointer-events", "auto");
+          $(".to-top-btn").css("opacity", 0);
+          $(".to-top-btn").css("pointer-events", "none");
+        }
+      }, 500);
+      // while scrolling, hide the button
+      $(".next-viewport-down-btn").css("opacity", 0);
+      $(".next-viewport-down-btn").css("pointer-events", "none");
+      $(".to-top-btn").css("opacity", 0);
+      $(".to-top-btn").css("pointer-events", "none");
     });
 
     // scroll to the top of the page on click of .to-top-btn
     $(".to-top-btn").click(function () {
       $(".to-top-btn").css("opacity", disabledOpacity);
       setTimeout(function () {
-        $(".to-top-btn").css("opacity", 1);
+        $(".to-top-btn").css("opacity", enabledOpacity);
       }, 500);
-      if (!event.detail || event.detail < 2) window.scrollTo(0, 0);
+      if (noDoubleClicked()) window.scrollTo(0, 0);
     });
   </script>
 </html>
