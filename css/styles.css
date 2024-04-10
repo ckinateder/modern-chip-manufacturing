@@ -4,7 +4,7 @@
   max-width: 1500px;
   min-width: 200px;
   height: 100vh;
-  border-bottom: 1px solid #000;
+  /*border-bottom: 1px solid #000;*/
 }
 .slide-container {
   width: fit-content;
@@ -20,9 +20,8 @@
   align-items: center;
   /* column display centered on page*/
 }
-.scroll-btn {
+.down-btn {
   width: 50px;
-  font-family: "Inter", sans-serif;
   padding: 10px;
   position: absolute;
   bottom: 10px;
@@ -30,7 +29,21 @@
   transform: translateX(-50%);
   transition: 0.3s;
 }
-.scroll-btn:hover {
+.up-btn {
+  width: 50px;
+  padding: 10px;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: 0.3s;
+}
+.up-btn:hover {
+  cursor: pointer;
+  transition: 0.3s;
+  transform: translate(-50%, 8%);
+}
+.down-btn:hover {
   cursor: pointer;
   transition: 0.3s;
   transform: translate(-50%, -8%);
