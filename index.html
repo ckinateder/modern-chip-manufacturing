@@ -62,13 +62,11 @@
         <a href="https://ig.ft.com/microchips/" target="_blank">
           <img class="slide" id="slide12" src="img/sld_12.svg" alt="Slide 12" />
         </a>
-        <div class="footer">
-          <p>
-            <a href="https://www.calvinkinateder.com" target="_blank"
-              >Calvin Kinateder</a
-            >, 2024
-          </p>
-        </div>
+      </div>
+      <div class="footer">
+        <a href="https://www.calvinkinateder.com" target="_blank"
+          >Calvin Kinateder</a
+        >, 2024
       </div>
     </div>
 
@@ -123,16 +121,15 @@
           $(".to-top-btn").css("opacity", 0);
           $(".to-top-btn").css("pointer-events", "none");
         }
-        /*
+
         // if past the first slide, enable .header
-        if (getCurrentSlide() > 1) {
-          $(".header").css("opacity", 1);
-          $(".header").css("pointer-events", "auto");
+        if (getCurrentSlide() >= lastSlide) {
+          $(".footer").css("opacity", 1);
+          $(".footer").css("pointer-events", "auto");
         } else {
-          $(".header").css("opacity", 0);
-          $(".header").css("pointer-events", "none");
+          $(".footer").css("opacity", 0);
+          $(".footer").css("pointer-events", "none");
         }
-        */
       }, 500);
       // while scrolling, hide the button
       $(".next-viewport-down-btn").css("opacity", 0);
