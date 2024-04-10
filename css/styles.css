@@ -6,6 +6,11 @@
   height: 100vh;
   border-bottom: 1px solid #000;
 }
+.slide-container {
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+}
 .slideshow {
   /* column display centered on page*/
   display: flex;
@@ -16,11 +21,19 @@
   /* column display centered on page*/
 }
 .scroll-btn {
+  width: 50px;
   font-family: "Inter", sans-serif;
   padding: 10px;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: 0.3s;
 }
 .scroll-btn:hover {
   cursor: pointer;
+  transition: 0.3s;
+  transform: translate(-50%, -8%);
 }
 html {
   scroll-behavior: smooth;
